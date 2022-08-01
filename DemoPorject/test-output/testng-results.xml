@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2022-07-30T05:26:03Z" name="Default suite" finished-at="2022-07-30T05:26:56Z" duration-ms="52763">
+    <groups>
+    </groups>
+    <test started-at="2022-07-30T05:26:03Z" name="Default test" finished-at="2022-07-30T05:26:56Z" duration-ms="52763">
+      <class name="PageTests.Rev_Summary_Daily">
+        <test-method is-config="true" signature="setup()[pri:0, instance:PageTests.Rev_Summary_Daily@60bd273d]" started-at="2022-07-30T05:26:03Z" name="setup" finished-at="2022-07-30T05:26:32Z" duration-ms="29382" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="Rev_Summary_Count()[pri:0, instance:PageTests.Rev_Summary_Daily@60bd273d]" started-at="2022-07-30T05:26:32Z" name="Rev_Summary_Count" finished-at="2022-07-30T05:26:56Z" duration-ms="23368" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Rev_Summary_Count -->
+      </class> <!-- PageTests.Rev_Summary_Daily -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
