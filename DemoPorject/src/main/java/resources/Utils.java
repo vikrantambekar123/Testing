@@ -35,11 +35,20 @@ public class Utils extends Base
 	
 	public static String Todayd_Date()
 	{
-		 todayDate = LocalDate.now();     
-		 String Today=todayDate.toString();
-		 String Day[]=Today.split("-");
-		 String today=Day[2].toString();
-		 return today;
+//		 todayDate = LocalDate.now();     
+//		 String Today=todayDate.toString();
+//		 String Day[]=Today.split("-");
+//		 System.out.println(Today);
+//		 String today=Day[2].toString();
+//		 System.out.println(today);
+		
+		
+//			Date date = new Date();
+//			SimpleDateFormat formatter = new SimpleDateFormat("d/MM/yy");
+		
+			String today=String.format("%tm", new java.util.Date()).replaceFirst("^0+(?!$)", "");
+			return today;
+
 	}
 	
 	
@@ -122,7 +131,7 @@ public class Utils extends Base
 	
 	public void open_Gmail() throws InterruptedException ,AWTException
 	{
-		System.setProperty("webdriver.chrome.driver","/home/vaibhav/Downloads/chromedriver_linux64/chromedriver");	
+		System.setProperty("webdriver.chrome.driver","C:\\Users\\Testriq_D30\\Downloads\\Vikrant\\chromedriver_win32\\chromedriver.exe");	
 		WebDriver driver = new ChromeDriver(); 
 		driver.manage().window().maximize();
 //		driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
@@ -240,9 +249,11 @@ public class Utils extends Base
 				System.out.println("----------------------------------");
 				JavascriptExecutor js13 = (JavascriptExecutor) driver;
 //				data1.click();
-				JavascriptExecutor je = (JavascriptExecutor) driver;
-				je.executeScript("arguments[0].scrollIntoView(true);",data1);
+//				JavascriptExecutor je = (JavascriptExecutor) driver;
+//				je.executeScript("arguments[0].scrollIntoView(true);",data1);
 				js13.executeScript("arguments[0].setAttribute('style', 'background: white; border: 4px solid red;');",data1);
+//				js13.executeScript("arguments[0].scrollIntoView(true);",data1);
+				Thread.sleep(2000);
 				data1.click();
 
 				}
@@ -260,7 +271,7 @@ public class Utils extends Base
 	        				 
 
 	        				int webtime = 0; // or any appllication default value try { number = Integer.parseInt(input); } catch (NumberFormatException nfe) { nfe.printStackTrace(); }
-		        				System.out.println("Priting temo value :-"+temp);
+//		        				System.out.println("Priting temo value :-"+temp);
 		        				try {
 		        					webtime = Integer.parseInt(temp); 
 								} catch (Exception e) {
@@ -271,9 +282,11 @@ public class Utils extends Base
 		        			System.out.println(webtime);
 		        			if(webtime>=latesttime)
 		        			{
+		        				System.out.println("Webtime :- "+webtime);
+		        				System.out.println("latestTime :- "+latesttime);
 //		        				JavascriptExecutor j1e = (JavascriptExecutor) driver;
 //		        				j1e.executeScript("arguments[0].scrollIntoView(true);",l);
-//		        				Thread.sleep(1000);
+		        				Thread.sleep(1000);
 		        				l.click();
 		        				break;
 		        			}

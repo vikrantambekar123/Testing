@@ -37,7 +37,7 @@ public class Rev_Summary_Daily extends Base
 //		rev.Rev_Summary_Daily();
 //		rev.Rev_Summary_Weekly();
 //		rev.Rev_Summary_Monthly();
-		rev.All_Teams_Creation();
+//		rev.All_Teams_Creation();
 	}
 	
 	

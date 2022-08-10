@@ -17,7 +17,7 @@ public class Base
 	
 	public Base()
 	{
-		File file = new File("/home/vaibhav/Downloads/DemoPorject/DemoPorject/config.properties");
+		File file = new File("C:\\Users\\Testriq_D30\\Downloads\\Vikrant\\UpdatedProject\\Testing\\DemoPorject\\config.properties");
 		  
 		FileInputStream fileInput = null;
 		try {
@@ -41,7 +41,7 @@ public class Base
 		String browserName = prop.getProperty("browser");
 		
 		if(browserName.equals("chrome")){
-			System.setProperty("webdriver.chrome.driver","/home/vaibhav/Downloads/chromedriver_linux64/chromedriver");	
+			System.setProperty("webdriver.chrome.driver","C:\\Users\\Testriq_D30\\Downloads\\Vikrant\\chromedriver_win32\\chromedriver.exe");	
 			driver = new ChromeDriver(); 
 		}
 		

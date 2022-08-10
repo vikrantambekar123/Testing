@@ -187,6 +187,7 @@ public class GetReveiwCount extends Base
 			Save_As_SchduelueName.sendKeys("Response Reminder "+Utils.Todayd_Date()+"  "+Utils.Currnet_Month()); // Entering SaveasEmail
 			Enter_Email_Address.sendKeys("vikrant.ambekar@testriq.com"); // Entering Email
 			Enter_Email_Address.sendKeys(Keys.ENTER);		
+			Thread.sleep(2000);
 			DatePicker.click();	
 			
 			Iterator<WebElement>it=Email_Date_Selection.iterator(); // Iterating Post DAta for Custom Previous and Today
@@ -236,7 +237,7 @@ public class GetReveiwCount extends Base
 		{
 			Thread.sleep(2000);
 			Clicking_on_PostingDate.click(); //CLicking on Posting Date
-			Thread.sleep(2000);
+//			Thread.sleep(2000);
 
 			Clicking_on_Custom.click(); //CLicking on Custom
 			//Iterating Date to Select Previous Date and Current Date 
@@ -244,26 +245,29 @@ public class GetReveiwCount extends Base
 			while(it.hasNext())
 			{
 				WebElement l=it.next();
-//				Thread.sleep(2000);//			
+//				Thread.sleep(1000);//			
 				Utils.JavascriptExecutor_Highlightelement(l);
 				if(l.getText().equalsIgnoreCase(Utils.Previous_Day()))
 				{
 					System.out.println("Selected Prev");
 //					Thread.sleep(2000);
 					Utils.JavascriptExecutor_Highlightelement(l);
-					Utils.JavascriptExecutor_Click(l);
+					l.click();
+//					Utils.JavascriptExecutor_Click(l);
 //					Thread.sleep(2000);
-//										break;
+					break;
 				}
 				else if(l.getText().equalsIgnoreCase(Utils.Todayd_Date()))
 				{
 					System.out.println("Selected today");
 					Utils.JavascriptExecutor_Highlightelement(l);
-					Utils.JavascriptExecutor_Click(l);
-					Utils.JavascriptExecutor_Click(ApplyButton);
+					l.click();
+//					Utils.JavascriptExecutor_Click(l);
 					break;
 				}
 			}
+			Utils.JavascriptExecutor_Click(ApplyButton);
+
 
 			
 			Thread.sleep(2000);
@@ -276,8 +280,8 @@ public class GetReveiwCount extends Base
 			System.out.println("---------------- Rev Summary Daily Count-------------------");
 			
 			Thread.sleep(3000);
-			String Revdailycount=Reviewtotalcount.getText().toString();
-			System.out.println("Revdailycount :"+Revdailycount);
+//			String Revdailycount=Reviewtotalcount.getText().toString();
+//			System.out.println("Revdailycount :"+Revdailycount);
 			System.out.println();
 			System.out.println();
 			System.out.println("------------------------------------------------------------");
