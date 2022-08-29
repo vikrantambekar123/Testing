@@ -41,6 +41,8 @@
     <version>2.10.10</version>
 </dependency>
 
+<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+
 
     
     <!-- https://mvnrepository.com/artifact/org.testng/testng -->

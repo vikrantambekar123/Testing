@@ -235,38 +235,45 @@ public class GetReveiwCount extends Base
 		
 		public void Rev_Summary_Daily() throws InterruptedException
 		{
-			Thread.sleep(2000);
+			Thread.sleep(4000);
+			Utils.Webdriverwait_elementtobeclickable(Clicking_on_PostingDate); 
 			Clicking_on_PostingDate.click(); //CLicking on Posting Date
-//			Thread.sleep(2000);
-
+			
+			Utils.Webdriverwait_elementtobeclickable(Clicking_on_Custom);
 			Clicking_on_Custom.click(); //CLicking on Custom
+//			Thread.sleep(7000);
 			//Iterating Date to Select Previous Date and Current Date 
 			Iterator<WebElement>it=Selecting_Custom_Date.iterator();
 			while(it.hasNext())
 			{
+			
 				WebElement l=it.next();
 //				Thread.sleep(1000);//			
 				Utils.JavascriptExecutor_Highlightelement(l);
-				if(l.getText().equalsIgnoreCase(Utils.Previous_Day()))
+				String Customdate=l.getText().toString();
+				
+				if(Customdate.equalsIgnoreCase(Utils.Previous_Day()))
 				{
-					System.out.println("Selected Prev");
+					Thread.sleep(2000);
+					Utils.JavascriptExecutor_Highlightelement(l);
+//					l.click();
+					Utils.JavascriptExecutor_Click(l);
 //					Thread.sleep(2000);
+//					break;
+				}
+				else if(Customdate.equalsIgnoreCase(Utils.Todayd_Date()))
+				{
+//					System.out.println("Selected today"+Utils.Todayd_Date());
 					Utils.JavascriptExecutor_Highlightelement(l);
 					l.click();
-//					Utils.JavascriptExecutor_Click(l);
-//					Thread.sleep(2000);
-					break;
-				}
-				else if(l.getText().equalsIgnoreCase(Utils.Todayd_Date()))
-				{
-					System.out.println("Selected today");
-					Utils.JavascriptExecutor_Highlightelement(l);
-					l.click();
+					Utils.JavascriptExecutor_Click(ApplyButton);
 //					Utils.JavascriptExecutor_Click(l);
 					break;
 				}
+				
+//				System.out.println(Customdate);
 			}
-			Utils.JavascriptExecutor_Click(ApplyButton);
+			
 
 
 			
@@ -280,8 +287,8 @@ public class GetReveiwCount extends Base
 			System.out.println("---------------- Rev Summary Daily Count-------------------");
 			
 			Thread.sleep(3000);
-//			String Revdailycount=Reviewtotalcount.getText().toString();
-//			System.out.println("Revdailycount :"+Revdailycount);
+			String Revdailycount=Reviewtotalcount.getText().toString();
+			System.out.println("Revdailycount :"+Revdailycount);
 			System.out.println();
 			System.out.println();
 			System.out.println("------------------------------------------------------------");
@@ -298,8 +305,24 @@ public class GetReveiwCount extends Base
 			Enter_Custom_Email_Subject.sendKeys("Rev Summary Daily "+Utils.Todayd_Date()+" "+Utils.Currnet_Month()); // Entering Custom EMail Subject
 			
 			Save_As_SchduelueName.sendKeys("Rev Summary Daily "+Utils.Todayd_Date()+" "+Utils.Currnet_Month()); // Entering SaveasEmail
-			Enter_Email_Address.sendKeys("vikrant.ambekar@testriq.com"); // Entering Email
-			Enter_Email_Address.sendKeys(Keys.ENTER);		
+			
+			
+			String property = prop.getProperty("Email_ids");
+			String[] x = property.split(",");
+//			int emailidslen=x.length;
+//			System.out.println("Emailids Length :- "+emailidslen);
+		
+			
+			for(int i=0;i<x.length;i++)
+			{
+				System.out.println(x[i]);
+				Enter_Email_Address.sendKeys(x[i]); // Entering Email
+				Enter_Email_Address.sendKeys(Keys.ENTER);	
+			}
+				
+			
+			
+			
 			DatePicker.click();	
 			
 			Iterator<WebElement>it2=Email_Date_Selection.iterator(); // Iterating Post DAta for Custom Previous and Today

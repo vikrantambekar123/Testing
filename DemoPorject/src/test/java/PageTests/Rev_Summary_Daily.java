@@ -34,7 +34,7 @@ public class Rev_Summary_Daily extends Base
 	public void Rev_Summary_Count() throws InterruptedException , NumberFormatException
 	{
 //		rev.Response_Reminder();
-//		rev.Rev_Summary_Daily();
+		rev.Rev_Summary_Daily();
 //		rev.Rev_Summary_Weekly();
 //		rev.Rev_Summary_Monthly();
 //		rev.All_Teams_Creation();

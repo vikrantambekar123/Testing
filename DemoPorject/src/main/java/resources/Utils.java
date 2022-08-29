@@ -35,19 +35,20 @@ public class Utils extends Base
 	
 	public static String Todayd_Date()
 	{
-//		 todayDate = LocalDate.now();     
-//		 String Today=todayDate.toString();
-//		 String Day[]=Today.split("-");
-//		 System.out.println(Today);
-//		 String today=Day[2].toString();
-//		 System.out.println(today);
+		 todayDate = LocalDate.now();     
+		 String Today=todayDate.toString();
+		 String Day[]=Today.split("-");
+		 System.out.println(Today);
+		 String today=Day[2].toString();
+		 
+		 return today;
 		
 		
 //			Date date = new Date();
 //			SimpleDateFormat formatter = new SimpleDateFormat("d/MM/yy");
 		
-			String today=String.format("%tm", new java.util.Date()).replaceFirst("^0+(?!$)", "");
-			return today;
+//			String today=String.format("%tm", new java.util.Date()).replaceFirst("^0+(?!$)", "");
+//			return today;
 
 	}
 	
@@ -59,6 +60,7 @@ public class Utils extends Base
 		 String Prev=todayDate.minusDays(1).toString();
 		 String Previous[]=Prev.split("-");
 		 String Yesterday=Previous[2].toString();
+		 System.out.println("====> Yesterday"+Yesterday);
 		 return Yesterday;
 	}
 	
@@ -70,7 +72,7 @@ public class Utils extends Base
 	     String time = formatTime.format(date); // changing the format of 'date'
 	     System.out.println(time);
 	     String [] data=time.split(" ");
-	     String PM=data[1];
+	     String PM=data[1].toUpperCase();
 	     System.out.println(PM);
 	     return PM;
 	}
@@ -82,6 +84,21 @@ public class Utils extends Base
 		js.executeScript("arguments[0].click();", ele); // For Clicking SElect ALl
 		return js;
 	}
+	
+	
+	public void General()
+	{
+		String property = prop.getProperty("Email_ids");
+//		System.out.println(property);
+		String[] x = property.split(",");
+		int emailidslen=x.length;
+		System.out.println(emailidslen);
+		for(int i=0;i<x.length;i++)
+		{
+			System.out.println(x[i]);
+		}
+	}
+	
 	
 	public  static JavascriptExecutor JavascriptExecutor_Highlightelement(WebElement ele)
 	{
@@ -307,7 +324,7 @@ public class Utils extends Base
 	public static void main(String args[]) throws InterruptedException , AWTException
 	{
 		Utils u=new Utils();
-		u.open_Gmail();
+		u.General();
 	}
 //	
 	
