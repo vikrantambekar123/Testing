@@ -100,7 +100,7 @@ public class Demo {
 			WebElement l=it.next();
 //			js.executeScript("arguments[0].setAttribute('style', 'background: white; border: 2px solid red;');",l);
 //			System.out.println( l.getText().toString());
-			if(l.getText().equalsIgnoreCase(Utils.Todayd_Date()))
+			if(l.getText().equals(Utils.Todayd_Date()))
 			{
 				l.click();
 				break;

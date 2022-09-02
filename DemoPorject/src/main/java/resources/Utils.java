@@ -33,35 +33,48 @@ public class Utils extends Base
 	public static String r;
 	public static int latestr;
 	
-	public static String Todayd_Date()
+	public static int Todayd_Date()
 	{
-		 todayDate = LocalDate.now();     
-		 String Today=todayDate.toString();
-		 String Day[]=Today.split("-");
-		 System.out.println(Today);
-		 String today=Day[2].toString();
-		 
-		 return today;
 		
+		LocalDate today = LocalDate.now();
+		  
+		//adding one day to the localdate
+		//New way to deal with Dates
+		LocalDate tomorrow = today.now();
+//		System.out.println("--->"+tomorrow);
+		String tom=tomorrow.toString();
+		String h[]=tom.split("-");
+		int y=Integer.parseInt(h[2]);
+		return y;
+//		System.out.println(y);
+		//-----------------------------------------
 		
-//			Date date = new Date();
-//			SimpleDateFormat formatter = new SimpleDateFormat("d/MM/yy");
+		// This is Working 
+//		 todayDate = LocalDate.now(); 
+//		 todayDate.plusDays(10);
+//		 System.out.println(todayDate);
+//		 
+//		 String Today=todayDate.toString();
+//		 String Day[]=Today.split("-");
+//		 System.out.println(Today);
+//		 String today1=Day[2].toString();
+//		 System.out.println(today1);
+//		 
+//		 return today1;
 		
-//			String today=String.format("%tm", new java.util.Date()).replaceFirst("^0+(?!$)", "");
-//			return today;
 
 	}
 	
 	
-	public static String Previous_Day()
+	public static int Previous_Day()
 	{
 		todayDate = LocalDate.now();
 //		System.out.println(todayDate.minusDays(1));
 		 String Prev=todayDate.minusDays(1).toString();
 		 String Previous[]=Prev.split("-");
-		 String Yesterday=Previous[2].toString();
-		 System.out.println("====> Yesterday"+Yesterday);
-		 return Yesterday;
+		 int z=Integer.parseInt(Previous[2]);
+//		 System.out.println(z);
+		 return z;
 	}
 	
 	
@@ -324,7 +337,7 @@ public class Utils extends Base
 	public static void main(String args[]) throws InterruptedException , AWTException
 	{
 		Utils u=new Utils();
-		u.General();
+		u.Previous_Day();
 	}
 //	
 	

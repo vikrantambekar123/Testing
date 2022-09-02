@@ -131,14 +131,10 @@ public class GetReveiwCount extends Base
 	WebElement Modified_Apply;
 	
 	
-	
-	
+	public  String property;
+	public int emailidslen;
 	
 
-	
-	
-	
-	
 	public GetReveiwCount()
 	{
 		PageFactory.initElements(driver, this);
@@ -185,8 +181,20 @@ public class GetReveiwCount extends Base
 			Enter_Custom_Email_Subject.sendKeys("Response Reminder "+Utils.Todayd_Date()+"  "+Utils.Currnet_Month()); // Entering Custom EMail Subject
 			
 			Save_As_SchduelueName.sendKeys("Response Reminder "+Utils.Todayd_Date()+"  "+Utils.Currnet_Month()); // Entering SaveasEmail
-			Enter_Email_Address.sendKeys("vikrant.ambekar@testriq.com"); // Entering Email
-			Enter_Email_Address.sendKeys(Keys.ENTER);		
+
+			property = prop.getProperty("Email_ids");
+			String[] x = property.split(",");
+			emailidslen=x.length;
+			System.out.println("Emailids Length :- "+emailidslen);
+		
+			
+			for(int i=0;i<x.length;i++)
+			{
+				System.out.println(x[i]);
+				Enter_Email_Address.sendKeys(x[i]); // Entering Email
+				Enter_Email_Address.sendKeys(Keys.ENTER);	
+			}
+						
 			Thread.sleep(2000);
 			DatePicker.click();	
 			
@@ -194,10 +202,13 @@ public class GetReveiwCount extends Base
 			while(it.hasNext())
 			{
 				WebElement l=it.next();
-				if(l.getText().equalsIgnoreCase(Utils.Todayd_Date()))
+				int ltext=Integer.parseInt(l.getText());
+				System.out.println("Ltext is :-"+ ltext);
+				if(ltext == Utils.Todayd_Date())
 				{
 					l.click();
 					break;
+				
 				}
 			}
 			
@@ -233,6 +244,7 @@ public class GetReveiwCount extends Base
 		
 		
 		
+		
 		public void Rev_Summary_Daily() throws InterruptedException
 		{
 			Thread.sleep(4000);
@@ -251,9 +263,14 @@ public class GetReveiwCount extends Base
 //				Thread.sleep(1000);//			
 				Utils.JavascriptExecutor_Highlightelement(l);
 				String Customdate=l.getText().toString();
+				int o=Integer.parseInt(Customdate);
+				System.out.println(Customdate);
 				
-				if(Customdate.equalsIgnoreCase(Utils.Previous_Day()))
+				
+				
+				if(o == Utils.Previous_Day())
 				{
+					System.out.println("Previous date :-"+Utils.Previous_Day());
 					Thread.sleep(2000);
 					Utils.JavascriptExecutor_Highlightelement(l);
 //					l.click();
@@ -261,8 +278,10 @@ public class GetReveiwCount extends Base
 //					Thread.sleep(2000);
 //					break;
 				}
-				else if(Customdate.equalsIgnoreCase(Utils.Todayd_Date()))
+				System.out.println("Todays date :- "+Utils.Todayd_Date());
+				if (o == Utils.Todayd_Date())
 				{
+					System.out.println("Todys date :-"+Utils.Todayd_Date());
 //					System.out.println("Selected today"+Utils.Todayd_Date());
 					Utils.JavascriptExecutor_Highlightelement(l);
 					l.click();
@@ -271,7 +290,7 @@ public class GetReveiwCount extends Base
 					break;
 				}
 				
-//				System.out.println(Customdate);
+				System.out.println(Customdate);
 			}
 			
 
@@ -307,10 +326,10 @@ public class GetReveiwCount extends Base
 			Save_As_SchduelueName.sendKeys("Rev Summary Daily "+Utils.Todayd_Date()+" "+Utils.Currnet_Month()); // Entering SaveasEmail
 			
 			
-			String property = prop.getProperty("Email_ids");
+			property = prop.getProperty("Email_ids");
 			String[] x = property.split(",");
-//			int emailidslen=x.length;
-//			System.out.println("Emailids Length :- "+emailidslen);
+			emailidslen=x.length;
+			System.out.println("Emailids Length :- "+emailidslen);
 		
 			
 			for(int i=0;i<x.length;i++)
@@ -319,25 +338,29 @@ public class GetReveiwCount extends Base
 				Enter_Email_Address.sendKeys(x[i]); // Entering Email
 				Enter_Email_Address.sendKeys(Keys.ENTER);	
 			}
-				
-			
-			
-			
+						
+			Thread.sleep(2000);
 			DatePicker.click();	
 			
 			Iterator<WebElement>it2=Email_Date_Selection.iterator(); // Iterating Post DAta for Custom Previous and Today
 			while(it2.hasNext())
 			{
 				WebElement l=it2.next();
-				System.out.println( l.getText().toString());
-				if(l.getText().equalsIgnoreCase(Utils.Todayd_Date()))
+				int ltext=Integer.parseInt(l.getText());
+				System.out.println("Ltext is :-"+ ltext);
+				if(ltext == Utils.Todayd_Date())
 				{
 					l.click();
 					break;
+				
 				}
 			}
 			
-			Hours_and_Min.click(); // Clicking on Hours and Mins
+	 
+			
+	        Thread.sleep(1000);
+
+	        Hours_and_Min.click(); // Clicking on Hours and Mins
 			Thread.sleep(2000);
 			
 			Utils.Setdatetime();
@@ -397,23 +420,41 @@ public class GetReveiwCount extends Base
 			Enter_Custom_Email_Subject.sendKeys("ReV Summary Weekly "+Utils.Todayd_Date()+" "+Utils.Currnet_Month()); // Entering Custom EMail Subject
 			
 			Save_As_SchduelueName.sendKeys("ReV Summary Weekly "+Utils.Todayd_Date()+" "+Utils.Currnet_Month()); // Entering SaveasEmail
-			Enter_Email_Address.sendKeys("vikrant.ambekar@testriq.com"); // Entering Email
-			Enter_Email_Address.sendKeys(Keys.ENTER);		
+			property = prop.getProperty("Email_ids");
+			String[] x = property.split(",");
+			emailidslen=x.length;
+			System.out.println("Emailids Length :- "+emailidslen);
+		
+			
+			for(int i=0;i<x.length;i++)
+			{
+				System.out.println(x[i]);
+				Enter_Email_Address.sendKeys(x[i]); // Entering Email
+				Enter_Email_Address.sendKeys(Keys.ENTER);	
+			}
+						
+			Thread.sleep(2000);
 			DatePicker.click();	
 			
-			Iterator<WebElement>it=Email_Date_Selection.iterator(); // Iterating Post DAta for Custom Previous and Today
-			while(it.hasNext())
+			Iterator<WebElement>it2=Email_Date_Selection.iterator(); // Iterating Post DAta for Custom Previous and Today
+			while(it2.hasNext())
 			{
-				WebElement l=it.next();
-				Utils.JavascriptExecutor_Highlightelement(l);
-				if(l.getText().equalsIgnoreCase(Utils.Todayd_Date()))
+				WebElement l=it2.next();
+				int ltext=Integer.parseInt(l.getText());
+				System.out.println("Ltext is :-"+ ltext);
+				if(ltext == Utils.Todayd_Date())
 				{
 					l.click();
 					break;
+				
 				}
 			}
 			
-			Hours_and_Min.click(); // Clicking on Hours and Mins
+	 
+			
+	        Thread.sleep(1000);
+
+	        Hours_and_Min.click(); // Clicking on Hours and Mins
 			Thread.sleep(2000);
 			
 			Utils.Setdatetime();
@@ -427,7 +468,7 @@ public class GetReveiwCount extends Base
 		        }
 		        
 		        Thread.sleep(1000);
-		        driver.findElement(By.xpath("//div[contains(text(),'Daily')]")).click(); // For Selecting Frequency Currently Not Applicable in Response Reminder
+		        driver.findElement(By.xpath("//div[contains(text(),'Weekly')]")).click(); // For Selecting Frequency Currently Not Applicable in Response Reminder
 				
 		        Utils.JavascriptExecutor_Highlightelement(SaveButton);
 		        Utils.JavascriptExecutor_Click(SaveButton);
@@ -481,47 +522,64 @@ public class GetReveiwCount extends Base
 			
 			Enter_Custom_Email_Subject.sendKeys("ReV Summary Monthly "+Utils.Todayd_Date()+" "+Utils.Currnet_Month()); // Entering Custom EMail Subject
 			Save_As_SchduelueName.sendKeys("ReV Summary Monthly "+Utils.Todayd_Date()+" "+Utils.Currnet_Month()); // Entering SaveasEmail
-			Enter_Email_Address.sendKeys("vikrant.ambekar@testriq.com"); // Entering Email
-			Enter_Email_Address.sendKeys(Keys.ENTER);		
+			property = prop.getProperty("Email_ids");
+			String[] x = property.split(",");
+			emailidslen=x.length;
+			System.out.println("Emailids Length :- "+emailidslen);
+		
+			
+			for(int i=0;i<x.length;i++)
+			{
+				System.out.println(x[i]);
+				Enter_Email_Address.sendKeys(x[i]); // Entering Email
+				Enter_Email_Address.sendKeys(Keys.ENTER);	
+			}
+						
+			Thread.sleep(2000);
 			DatePicker.click();	
 			
-			Iterator<WebElement>it=Email_Date_Selection.iterator(); // Iterating Post DAta for Custom Previous and Today
-			while(it.hasNext())
+			Iterator<WebElement>it2=Email_Date_Selection.iterator(); // Iterating Post DAta for Custom Previous and Today
+			while(it2.hasNext())
 			{
-				WebElement l=it.next();
-				System.out.println( l.getText().toString());
-				if(l.getText().equalsIgnoreCase(Utils.Todayd_Date()))
+				WebElement l=it2.next();
+				int ltext=Integer.parseInt(l.getText());
+				System.out.println("Ltext is :-"+ ltext);
+				if(ltext == Utils.Todayd_Date())
 				{
 					l.click();
 					break;
+				
 				}
 			}
-			Thread.sleep(1000);
-			Hours_and_Min.click(); // Clicking on Hours and Mins
-//			Thread.sleep(2000);
 			
+	 
+			
+	        Thread.sleep(1000);
+
+	        Hours_and_Min.click(); // Clicking on Hours and Mins
+			Thread.sleep(2000);
 			
 			Utils.Setdatetime();
-//        	System.out.println(Utils.Timing_Am_PM());
-//		        Thread.sleep(7000);	
-		      String am_pm_Selection=AM_PM_Selection.getText().toString();
-	        if(!am_pm_Selection.equals(Utils.Timing_Am_PM()))
-	        {
-	        	Utils.JavascriptExecutor_Highlightelement(AM_PM_Selection);
-	        	AM_PM_Selection.click();
-	        }
-	        
-	        Thread.sleep(1000);
-	        driver.findElement(By.xpath("//div[contains(text(),'Daily')]")).click(); // For Selecting Frequency Currently Not Applicable in Response Reminder
-			
-	        Utils.JavascriptExecutor_Highlightelement(SaveButton);
-	        Utils.JavascriptExecutor_Click(SaveButton);
-	        
-			Thread.sleep(1000);
-			String sucessmail=SuccessMessage.getText().toString(); // Getting Success Message
-			System.out.println(sucessmail);	
-			
-			CloseButton.click(); 
+        	System.out.println(Utils.Timing_Am_PM());
+		        Thread.sleep(6000);	
+		        String am_pm_Selection=AM_PM_Selection.getText().toString();
+		        if(!am_pm_Selection.equals(Utils.Timing_Am_PM()))
+		        {
+		        	Utils.JavascriptExecutor_Highlightelement(AM_PM_Selection);
+		        	AM_PM_Selection.click();
+		        }
+		        
+		        Thread.sleep(1000);
+		        driver.findElement(By.xpath("//div[contains(text(),'Montly')]")).click(); // For Selecting Frequency Currently Not Applicable in Response Reminder
+				
+		        Utils.JavascriptExecutor_Highlightelement(SaveButton);
+		        Utils.JavascriptExecutor_Click(SaveButton);
+		        
+				Thread.sleep(1000);
+				String sucessmail=SuccessMessage.getText().toString(); // Getting Success Message
+				System.out.println(sucessmail);	
+				
+				CloseButton.click(); 
 			
 			
 		}		

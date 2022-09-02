@@ -5,15 +5,18 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.Reader;
+import java.util.HashMap;
 import java.util.Properties;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
 
 public class Base 
 {
 	public static Properties prop;
 	public static WebDriver driver;	
+	public static DesiredCapabilities capabilities;
 	
 	public Base()
 	{
@@ -39,6 +42,11 @@ public class Base
 	public void Initiliazation()
 	{
 		String browserName = prop.getProperty("browser");
+//		capabilities = DesiredCapabilities.internetExplorer();
+//		HashMap<String, Object> browserstackOptions = new HashMap<String, Object>();
+//		browserstackOptions.put("resolution", "1024x768");
+//		capabilities.setCapability("bstack:options", browserstackOptions);
+		
 		
 		if(browserName.equals("chrome")){
 			System.setProperty("webdriver.chrome.driver","C:\\Users\\Testriq_D30\\Downloads\\Vikrant\\chromedriver_win32\\chromedriver.exe");	
